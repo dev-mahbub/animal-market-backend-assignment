@@ -1,7 +1,7 @@
-import { Schema, model } from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { IUser, IUserModel } from './user.interface';
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<IUser, IUserModel>(
   {
     id: {
       type: String,
@@ -10,23 +10,20 @@ const userSchema = new Schema<IUser>(
     },
     role: {
       type: String,
+      enum: ['seller', 'buyer'],
       required: true,
     },
     password: {
       type: String,
       required: true,
     },
-    student: {
+    seller: {
       type: Schema.Types.ObjectId,
-      ref: 'Student',
+      ref: 'Seller',
     },
-    faculty: {
+    buyer: {
       type: Schema.Types.ObjectId,
-      ref: 'Faculty',
-    },
-    admin: {
-      type: Schema.Types.ObjectId,
-      ref: 'Admin',
+      ref: 'Buyer',
     },
   },
   {

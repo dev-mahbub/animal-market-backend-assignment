@@ -1,15 +1,13 @@
 import { Model, Types } from 'mongoose';
-import { IStudent } from '../student/student.interface';
-import { IFaculty } from '../faculty/faculty.interface';
-import { IAdmin } from '../admin/admin.interface';
+import { ISeller } from '../seller/seller.interface';
+import { IBuyer } from '../buyer/buyer.interface';
 
 export type IUser = {
   id: string;
   role: string;
   password: string;
-  student?: Types.ObjectId | IStudent;
-  faculty?: Types.ObjectId | IFaculty;
-  admin?: Types.ObjectId | IAdmin;
+  seller?: Types.ObjectId | ISeller;
+  buyer?: Types.ObjectId | IBuyer;
 };
 
 export type IUserModel = Model<IUser, Record<string, unknown>>;
